@@ -1,0 +1,90 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: #636e72;
+  background-image: linear-gradient(70deg, transparent, transparent 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3));
+  background-size: 100vw 100vh;
+}
+
+.container{
+  margin: 0;
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+/* Creating the circular containers for the arrows */
+.prev,
+.next{
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  background: #444;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.prev{
+  margin-right: 30px;
+}
+
+
+/* Creating the prev arrow for both elements. We're doing
+the same arrow for both element. Then we simply turn one of them
+180deg:)*/
+.prev::before,
+.next::before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 25px;
+  height: 25px;
+  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transition: 0.4s;
+}
+
+.prev::after,
+.next::after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px); /* 2px = 0.5 of height, so it makes it perfectly centered along vertical axis*/
+  left: 26px;
+  width: 0;
+  height: 4px;
+  background: #fff;
+  transition: 0.4s;
+}
+
+.prev:hover,
+.next:hover{
+  background-color: #0984e3;
+  box-shadow: 0 0 20px 5px #444;
+}
+
+.prev:hover::before,
+.next:hover::before{
+  left: 38px;
+}
+
+.prev:hover::after,
+.next:hover::after{
+  left: 19px;
+  width: 58%;
+}
+
+
+/* Creating the right arrow by turning .next element 180deg */
+.next{
+  transform: rotate(180deg);
+}
